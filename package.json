@@ -28,11 +28,13 @@
   "author": "Erik Dreifaldt <erik@dreifaldt.com> (https://github.com/eridr)",
   "license": "MIT",
   "homepage": "https://github.com/eridr/expo-wallet#readme",
-  "dependencies": {},
+  "dependencies": {
+    "expo-dev-client": "^5.2.4"
+  },
   "devDependencies": {
     "@types/react": "~19.0.0",
+    "expo": "~53.0.20",
     "expo-module-scripts": "^4.1.10",
-    "expo": "~53.0.0",
     "react-native": "0.79.1"
   },
   "peerDependencies": {
