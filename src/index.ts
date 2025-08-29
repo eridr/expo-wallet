@@ -2,3 +2,4 @@
 // and on native platforms to ExpoWalletModule.ts
 export { default } from './ExpoWalletModule';
 export * from  './ExpoWallet.types';
+export { ExpoWallet } from './ExpoWallet';
