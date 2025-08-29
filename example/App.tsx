@@ -1,37 +1,19 @@
 import { useEvent } from 'expo';
-import ExpoWallet, { ExpoWalletView } from 'expo-wallet';
+import ExpoWallet  from 'expo-wallet';
 import { Button, SafeAreaView, ScrollView, Text, View } from 'react-native';
 
 export default function App() {
-  const onChangePayload = useEvent(ExpoWallet, 'onChange');
+
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.container}>
         <Text style={styles.header}>Module API Example</Text>
-        <Group name="Constants">
-          <Text>{ExpoWallet.PI}</Text>
-        </Group>
         <Group name="Functions">
           <Text>{ExpoWallet.hello()}</Text>
         </Group>
-        <Group name="Async functions">
-          <Button
-            title="Set value"
-            onPress={async () => {
-              await ExpoWallet.setValueAsync('Hello from JS!');
-            }}
-          />
-        </Group>
-        <Group name="Events">
-          <Text>{onChangePayload?.value}</Text>
-        </Group>
-        <Group name="Views">
-          <ExpoWalletView
-            url="https://www.example.com"
-            onLoad={({ nativeEvent: { url } }) => console.log(`Loaded: ${url}`)}
-            style={styles.view}
-          />
+        <Group name="Wallet">
+          <Text>{ExpoWallet.hello()}</Text>
         </Group>
       </ScrollView>
     </SafeAreaView>
