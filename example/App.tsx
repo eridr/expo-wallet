@@ -1,9 +1,22 @@
-import { useEvent } from 'expo';
+import { Asset } from 'expo-asset';
 import ExpoWallet  from 'expo-wallet';
 import { Button, SafeAreaView, ScrollView, Text, View } from 'react-native';
 
-export default function App() {
+const handleAddPasses = async () => {
+  try {
+    // Load the pkpass asset and get its local URI
+    const asset = Asset.fromModule(require('./assets/pass.pkpass'));
+    await asset.downloadAsync();
+    const pkpassUri = asset.localUri;
+    if (!pkpassUri) throw new Error('Could not load pkpass asset');
+    const result = await ExpoWallet.addPasses([pkpassUri]);
+    alert(`Added passes: ${result.added}`);
+  } catch (error: unknown) {
+    alert(`Error: ${(error as Error)?.message || error}`);
+  }
+};
 
+export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
@@ -13,7 +26,7 @@ export default function App() {
           <Text>{ExpoWallet.hello()}</Text>
         </Group>
         <Group name="Wallet">
-          <Text>{ExpoWallet.hello()}</Text>
+          <Button onPress={handleAddPasses} title='Add passes'/>
         </Group>
       </ScrollView>
     </SafeAreaView>
